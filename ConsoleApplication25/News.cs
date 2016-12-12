@@ -11,15 +11,11 @@ namespace ConsoleApplication25
         public string Index { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public Coment Coment { get; set; }
-
-        public News(int count, string title, string content, Coment Coment)
-        {
-                
-        }
+        public List<Coment> Coment { get; set; }
 
         public News(string index, string title, string content)
         {
+            Coment = new List<Coment>();
             Index = index;
             Title = title;
             Content = content;
@@ -27,7 +23,7 @@ namespace ConsoleApplication25
 
         public void AddComent(string msg)
         {
-            Coment = new Coment(msg);
+            Coment.Add(new Coment(msg));
         }
 
         public override string ToString()
@@ -38,7 +34,12 @@ namespace ConsoleApplication25
             }
             else
             {
-                return String.Format($"{Content} \n {Coment.ToString()}");
+                string msg = string.Empty;
+                for (int i = 0; i < Coment.Count; i++)
+                {
+                    msg += Coment[i].ToString()+"\n";
+                }               
+                return String.Format($"{Content} \n {msg}");
             }
            
         }
