@@ -10,11 +10,6 @@ namespace ConsoleApplication25
     {             
         private List<News> _news = new List<News>();
 
-        public NewsHolder()
-        {
-            
-        }
-
         public void AddNews(News myNews)
         {
             _news.Add(myNews);           
